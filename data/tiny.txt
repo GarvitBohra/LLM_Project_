@@ -1,0 +1,72 @@
+This project is a tiny learning model.
+It is designed to help a beginner understand how a language model works.
+
+Language models learn by reading text and predicting the next token.
+Tokens are small pieces of text. They can be characters, subwords, or words.
+
+The model uses embeddings to turn token IDs into vectors.
+It uses attention to look at earlier tokens and decide what matters most.
+It uses feed-forward layers to transform information step by step.
+
+Training means showing the model many examples of text and asking it to predict
+the next token again and again.
+At first the predictions are noisy and strange.
+After more training, the model starts to learn patterns.
+
+Language models are useful because they can continue text in a style that looks
+similar to the training data.
+If the training text is clear and repeated, the model has an easier job.
+
+This project keeps the code small and readable.
+Python is a good language for this kind of project because the code is compact.
+PyTorch is useful because it gives us tensors, neural network layers, and
+automatic differentiation.
+
+When the model generates text, it predicts one token at a time.
+Each predicted token is added back into the input, and the process repeats.
+
+To make this toy model better, we want:
+1. cleaner training text
+2. a slightly larger model
+3. a calmer sampling strategy
+
+That is why this file repeats the same ideas in different ways.
+The repetition helps the model learn the pattern of good sentences.
+
+Keep learning one step at a time.
+Keep the code simple.
+Keep going.
+
+Language models learn by reading text and predicting the next token.
+The model uses embeddings to turn token IDs into vectors.
+It uses attention to look at earlier tokens and decide what matters most.
+It uses feed-forward layers to transform information step by step.
+
+Training means showing the model many examples of text and asking it to predict
+the next token again and again.
+At first the predictions are noisy and strange.
+After more training, the model starts to learn patterns.
+
+Language models are useful because they can continue text in a style that looks
+similar to the training data.
+If the training text is clear and repeated, the model has an easier job.
+
+This project keeps the code small and readable.
+Python is a good language for this kind of project because the code is compact.
+PyTorch is useful because it gives us tensors, neural network layers, and
+automatic differentiation.
+
+When the model generates text, it predicts one token at a time.
+Each predicted token is added back into the input, and the process repeats.
+
+To make this toy model better, we want:
+1. cleaner training text
+2. a slightly larger model
+3. a calmer sampling strategy
+
+That is why this file repeats the same ideas in different ways.
+The repetition helps the model learn the pattern of good sentences.
+
+Keep learning one step at a time.
+Keep the code simple.
+Keep going.
