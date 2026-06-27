@@ -77,6 +77,9 @@ python3 -m streamlit run app.py
 
 If `streamlit` is on your PATH, `streamlit run app.py` also works.
 
+Some Streamlit hosts expect `streamlit_app.py` as the entry point, so this
+project includes that file too.
+
 ## Easy next steps
 
 1. Replace `data/tiny.txt` with your own text.
