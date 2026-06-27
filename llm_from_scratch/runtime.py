@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 from pathlib import Path
 
 import torch
@@ -31,15 +32,19 @@ def generate_text(
     tokenizer: SimpleTokenizer,
     prompt: str,
     max_new_tokens: int,
-    temperature: float = 0.7,
-    top_k: int | None = 5,
+    temperature: float = 0.6,
+    top_k: int | None = 3,
 ) -> str:
     prompt_ids = tokenizer.encode(prompt)
     idx = torch.tensor([prompt_ids], dtype=torch.long)
-    out = model.generate(
-        idx,
-        max_new_tokens=max_new_tokens,
-        temperature=temperature,
-        top_k=top_k,
-    )
+    generate_kwargs = {
+        "max_new_tokens": max_new_tokens,
+        "temperature": temperature,
+        "top_k": top_k,
+        "ban_token_ids": [tokenizer.stoi.get("<unk>", 0)],
+        "repetition_penalty": 0.15,
+    }
+    supported = inspect.signature(model.generate).parameters
+    filtered_kwargs = {k: v for k, v in generate_kwargs.items() if k in supported}
+    out = model.generate(idx, **filtered_kwargs)
     return tokenizer.decode(out[0].tolist())

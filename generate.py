@@ -18,8 +18,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--prompt", type=str, default="hello")
     parser.add_argument("--max-new-tokens", type=int, default=100)
-    parser.add_argument("--temperature", type=float, default=0.7)
-    parser.add_argument("--top-k", type=int, default=5)
+    parser.add_argument("--temperature", type=float, default=0.6)
+    parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument("--checkpoint", type=Path, default=CKPT_PATH)
     args = parser.parse_args()
 

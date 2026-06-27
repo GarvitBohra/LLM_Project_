@@ -18,7 +18,7 @@ understand how an LLM works.
 - Streamlit
 
 It does **not** require `tiktoken` or `datasets`.  
-For learning, this version uses a simple **character-level tokenizer** so the
+For learning, this version uses a simple **word-and-space tokenizer** so the
 code is easier to understand.
 
 ## Files

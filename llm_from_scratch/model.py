@@ -118,11 +118,20 @@ class TinyGPT(nn.Module):
         max_new_tokens: int,
         temperature: float = 1.0,
         top_k: int | None = None,
+        ban_token_ids: list[int] | None = None,
+        repetition_penalty: float = 1.15,
     ) -> torch.Tensor:
         for _ in range(max_new_tokens):
             idx_cond = idx[:, -self.block_size :]
             logits, _ = self(idx_cond)
             logits = logits[:, -1, :] / temperature
+            if ban_token_ids:
+                logits[:, ban_token_ids] = float("-inf")
+            if repetition_penalty and repetition_penalty != 1.0:
+                for token_id in torch.unique(idx_cond):
+                    if ban_token_ids and int(token_id) in ban_token_ids:
+                        continue
+                    logits[:, token_id] -= repetition_penalty
             if top_k is not None:
                 values, _ = torch.topk(logits, min(top_k, logits.size(-1)))
                 cutoff = values[:, -1].unsqueeze(-1)
